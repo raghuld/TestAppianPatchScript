@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>93941184-96cb-4d26-88d0-60b5a2ceb51d</versionUuid>
+    <tempoReport a:uuid="1c96764b-337b-48ce-8a98-04d167489891" name="StopWatch TimerComponent">
+        <a:description>Sample Demonstrating Stopwatch component of timer plugin</a:description>
+        <a:uiExpr>=#"_a-0000e323-440f-8000-61d0-01ef9001ef90_142601"()</a:uiExpr>
+        <a:urlStub>xrZ16w</a:urlStub>
+    </tempoReport>
+    <roleMap/>
+    <history>
+        <historyInfo versionUuid="f7e8d4ea-43d4-4a3e-bd6f-eb0ac804dce4"/>
+        <historyInfo versionUuid="93941184-96cb-4d26-88d0-60b5a2ceb51d"/>
+    </history>
+</tempoReportHaul>

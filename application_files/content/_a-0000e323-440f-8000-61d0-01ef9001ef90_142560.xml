@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988389</versionUuid>
+    <rule>
+        <name>stopWatchTimerComponentSample1</name>
+        <uuid>_a-0000e323-440f-8000-61d0-01ef9001ef90_142560</uuid>
+        <description></description>
+        <parentUuid>_a-0000e323-440f-8000-61d0-01ef9001ef90_142554</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!seconds,
+  local!action: null,
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Scheduled Task",
+    instructions: "Sumbit The Task On Time",
+    contents: {
+      stopWatchField(
+        labelPosition: "ABOVE",
+        height: "AUTO",
+        showWhen: local!action = "START",
+        action: local!action,
+        size: "LARGE",
+        align: "CENTER",
+        expiredMessage: "The time to complete the task has been lapsed.",
+        color: "POSITIVE",
+        style: "STRONG",
+        timerDirection: "DOWN",
+        enableReverseTimer: true(),
+        reverseTimerColor: "NEGATIVE",
+        secondsValue: "10",
+        secondsSaveInto: local!seconds
+      ),
+      #"SYSTEM_SYSRULES_ButtonArrayLayout"(
+        buttons: {
+          #"SYSTEM_SYSRULES_ButtonWidget"(
+            label: "Start Exam",
+            saveInto: {
+              a!save(
+                local!action,
+                "START"
+              )
+            },
+            style: "PRIMARY",
+            showWhen: local!action &lt;&gt; "START"
+          )
+        },
+        align: "CENTER"
+      )
+      
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      showWhen: local!action = "START",
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "Submit",
+          submit: true,
+          style: "PRIMARY"
+        )
+      }
+    )
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e323-440f-8000-61d0-01ef9001ef90_142748"/>
+        <historyInfo versionUuid="_a-0000e323-440f-8000-61d0-01ef9001ef90_142982"/>
+        <historyInfo versionUuid="_a-0000e38f-748f-8000-61d1-01ef9001ef90_149017"/>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988389"/>
+    </history>
+</contentHaul>

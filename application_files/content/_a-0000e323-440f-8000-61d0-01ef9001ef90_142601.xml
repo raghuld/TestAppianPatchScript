@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988388</versionUuid>
+    <rule>
+        <name>stopWatchTimerComponentSample2</name>
+        <uuid>_a-0000e323-440f-8000-61d0-01ef9001ef90_142601</uuid>
+        <description></description>
+        <parentUuid>_a-0000e323-440f-8000-61d0-01ef9001ef90_142554</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>load(
+  local!action: null,
+  local!seconds,
+  local!reset,
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Stopwatch",
+    contents: {
+      stopWatchField(
+        labelPosition: "ABOVE",
+        height: "AUTO",
+        action: local!action,
+        size: "LARGE",
+        align: "CENTER",
+        color: "POSITIVE",
+        style: null,
+        timerDirection: "UP",
+        enableReverseTimer: null,
+        reverseTimerColor: "NEGATIVE",
+        secondsValue: if(
+          local!reset,
+          0,
+          0 + tointeger(
+            local!seconds
+          )
+        ),
+        secondsSaveInto: local!seconds
+      ),
+      
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: " Start",
+          value: "START",
+          saveInto: {
+            local!action,
+            a!save(
+              local!reset,
+              false()
+            )
+          },
+          disabled: local!action = "START",
+          style: "PRIMARY"
+        ),
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "Stop",
+          value: "STOP",
+          saveInto: {
+            local!action,
+            a!save(
+              local!reset,
+              false()
+            )
+          },
+          disabled: local!action = "STOP",
+          style: "PRIMARY"
+        )
+      },
+      secondaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "RESET &amp; START",
+          value: true(),
+          disabled: local!action = "START",
+          saveInto: {
+            local!reset,
+            a!save(
+              local!action,
+              "START"
+            )
+          },
+          style: "PRIMARY"
+        )
+      }
+    )
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e323-440f-8000-61d0-01ef9001ef90_142737"/>
+        <historyInfo versionUuid="_a-0000e323-440f-8000-61d0-01ef9001ef90_143041"/>
+        <historyInfo versionUuid="_a-0000e479-b108-8000-61f3-01ef9001ef90_493266"/>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988388"/>
+    </history>
+</contentHaul>

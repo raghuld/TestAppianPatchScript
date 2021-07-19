@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988426</versionUuid>
+    <rule>
+        <name>stopwatchTimerComponentWithAutoStopSample</name>
+        <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988062</uuid>
+        <description>Demonstrating Timer With Auto stop</description>
+        <parentUuid>_a-0000e323-440f-8000-61d0-01ef9001ef90_142554</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localvariables(
+  local!seconds,
+  local!action: null,
+  local!reset,
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Stopwatch",
+    contents: {
+      {
+        stopWatchField(
+          label: "Stopwatch Timer Demonstrating Automatic Stop at 45 Seconds in a  minute",
+          labelPosition: "ABOVE",
+          height: "AUTO",
+          action: local!action,
+          size: "MEDIUM",
+          align: "CENTER",
+          expiredMessage: null,
+          color: "POSITIVE",
+          style: null,
+          timerDirection: null,
+          enableReverseTimer: null,
+          reverseTimerColor: null,
+          secondsValue: if(
+            local!reset,
+            60,
+            tointeger(local!seconds)
+          ),
+          secondsSaveInto: {a!save(local!action,"STOP"),local!seconds},
+          enableAutoStop: true,
+          autoStopTimerSeconds: 45
+        ),
+        
+      }
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: " Start",
+          value: "START",
+          saveInto: {
+            local!action,
+            a!save(local!reset, true())
+          },
+          disabled: local!action = "START",
+          style: "PRIMARY"
+        ),
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "Stop",
+          value: "STOP",
+          saveInto: {
+            local!action,
+            a!save(local!reset, false())
+          },
+          disabled: local!action = "STOP",
+          style: "PRIMARY"
+        )
+      },
+      secondaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidget"(
+          label: "RESET &amp; START",
+          value: true(),
+          disabled: local!action = "START",
+          saveInto: {
+            local!reset,
+            a!save(local!action, "START")
+          },
+          style: "PRIMARY"
+        )
+      }
+    )
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988289"/>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988387"/>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988426"/>
+    </history>
+</contentHaul>

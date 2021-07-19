@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>c8abb875-7ed1-44e6-86c2-b4ef282fad0e</versionUuid>
+  <site a:uuid="e101a307-fa44-4f52-888d-9bf46ac20739" name="Stopwatch Timer Component">
+    <description>Stopwatch Timer</description>
+    <urlStub>timer-component</urlStub>
+    <page>
+      <staticName>Stopwatch Timer Component</staticName>
+      <description/>
+      <urlStub>timercomponent</urlStub>
+      <uiObject a:uuid="1c96764b-337b-48ce-8a98-04d167489891" xsi:type="a:TempoReport"/>
+      <iconId>f017</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>FULL</pageWidth>
+    </page>
+    <page>
+      <staticName>StopWatch Timer Component Autostop</staticName>
+      <description/>
+      <urlStub>stopwatch-timer-component-auto</urlStub>
+      <uiObject a:uuid="2259ef01-d9ee-4fac-834f-fe34b7b0e611" xsi:type="a:TempoReport"/>
+      <iconId>f017</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>FULL</pageWidth>
+    </page>
+    <visibility>268435456</visibility>
+    <faviconRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_FAVICON" xsi:type="a:CollaborationDocument"/>
+    <logoRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_LOGO" xsi:type="a:CollaborationDocument"/>
+    <showName>false</showName>
+    <tempoLinkVisibility>HIDDEN</tempoLinkVisibility>
+    <showRecordNews>true</showRecordNews>
+    <tasksInSitesVisibility>HIDDEN</tasksInSitesVisibility>
+    <buttonShape>SQUARED</buttonShape>
+    <navigationBarStyle>STYLE1</navigationBarStyle>
+    <inputShape>SQUARED</inputShape>
+    <isSystem>false</isSystem>
+  </site>
+  <roleMap/>
+  <history>
+    <historyInfo versionUuid="5d2c4a07-8eee-466c-9c9f-96cf8c0968e0"/>
+    <historyInfo versionUuid="c8abb875-7ed1-44e6-86c2-b4ef282fad0e"/>
+  </history>
+</siteHaul>

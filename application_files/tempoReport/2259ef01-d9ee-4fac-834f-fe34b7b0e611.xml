@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>b80d4907-4a29-48a0-8651-661db202a2d0</versionUuid>
+    <tempoReport a:uuid="2259ef01-d9ee-4fac-834f-fe34b7b0e611" name="Stopwatch Timer Component Autostop Sample">
+        <a:description>Autostop Stopwatch Timer Component Sample</a:description>
+        <a:uiExpr>=#"_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_988062"()</a:uiExpr>
+        <a:urlStub>-B2aGg</a:urlStub>
+    </tempoReport>
+    <roleMap/>
+    <history>
+        <historyInfo versionUuid="4f5050ce-f006-4056-aada-ba571a62754d"/>
+        <historyInfo versionUuid="b80d4907-4a29-48a0-8651-661db202a2d0"/>
+    </history>
+</tempoReportHaul>
