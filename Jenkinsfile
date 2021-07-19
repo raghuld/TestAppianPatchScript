@@ -26,7 +26,7 @@ pipeline {
 				dir('C:/Users/raghuld/POC Github Jenkins/Deployment Automation Manager/appian-adm-versioning-client-2.5.12') {
     // some block
 			echo "${params.isFullApplicationImport}"
-			if("${params.isFullApplicationImport}"=="true" && !"${params.startHash}".isEmpty() && !"${params.endHash}".isEmpty())
+			if("${params.isFullApplicationImport}"!="true" && "${params.startHash}".isEmpty()==false && "${params.endHash}".isEmpty()==false)
 			{
 				
     	    bat "version-application -vc_username ${params.vcUsername} -vc_password ${params.vcPassword} -repo_url ${params.repoUrl} -action buildSingleApp -uuid ${uuid} -package_path \"${applicationPath}\" -start_hash ${startHash} -end_hash ${endHash}"
