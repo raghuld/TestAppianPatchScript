@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
-    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994265</versionUuid>
+    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994615</versionUuid>
     <constant>
-        <name>JEN_TEST_PATCH</name>
+        <name>JEN_TEST_PATCH_RN</name>
         <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994261</uuid>
         <description>Patch Constant</description>
         <parentUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994227</parentUuid>
@@ -52,5 +52,6 @@
     </roleMap>
     <history>
         <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994265"/>
+        <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994615"/>
     </history>
 </contentHaul>
