@@ -12,7 +12,7 @@ pipeline {
 		string(name: 'appianUsername', description: 'Appian Username',defaultValue: 'raghuld@vuram.com')
 		string(name: 'appianPassword', description: 'Appian Password',defaultValue: 'test124')
 		booleanParam(name: 'isFullApplicationImport', description: 'True For Full Appication Import False for patch',defaultValue: 'true')
-		string(name: 'startHash', description: 'Considered Only if isFullApplicationImport is false',defaultValue: 'Provide the precedent hash.Only Changes made in the commits after this hash will be considered')
+		string(name: 'startHash', description: 'Provide the precedent hash.Only Changes made in the commits after this hash will be considered',defaultValue: '')
 		string(name: 'endHash', description: 'Considered Only if isFullApplicationImport is false.Provide the ending hash to consider',defaultValue: '')
 
 
