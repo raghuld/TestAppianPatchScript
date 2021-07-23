@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13307</versionUuid>
+    <rule>
+        <name>VFM_vehicleSummaryView</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13295</uuid>
+        <description>Holds vehicle summary view</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13261</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #"SYSTEM_SYSRULES_columnsLayout"(
+    columns: {
+      #"SYSTEM_SYSRULES_columnLayout"(
+        contents: {
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Make",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.make,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Category",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.category,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Vehicle Condition",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.vehicleCondition,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_dateField"(
+            label: "Next Service Date",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.nextServiceDate,
+            readOnly: true
+          )
+        }
+      ),
+      #"SYSTEM_SYSRULES_columnLayout"(
+        contents: {
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Model",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.model,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_textField"(
+            label: "License Plate",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.licensePlate,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_dateTimeField"(
+            label: "Last Updated",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.lastUpdated,
+            readOnly: true
+          ),
+          #"SYSTEM_SYSRULES_integerField"(
+            label: "Mileage",
+            labelPosition: "ADJACENT",
+            value: ri!VFM_Vechicle.mileage,
+            readOnly: true
+          )
+        }
+      )
+    }
+  )
+}</definition>
+        <namedTypedValue>
+            <name>VFM_Vechicle</name>
+            <type>
+                <name>VFM_Vechicle</name>
+                <namespace>urn:com:appian:types:VFM</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <typedValue>
+        <type>
+            <name>RuleTestConfig?list</name>
+            <namespace>http://www.appian.com/ae/types/2009</namespace>
+        </type>
+        <value>
+            <el>
+                <a:name/>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:Expression">'type!{urn:com:appian:types:VFM}VFM_Vechicle'()</a:value>
+                    <a:nameRef>VFM_Vechicle</a:nameRef>
+                    <a:id/>
+                </a:ruleInputTestConfigs>
+                <a:assertions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </el>
+        </value>
+    </typedValue>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13307"/>
+    </history>
+</contentHaul>

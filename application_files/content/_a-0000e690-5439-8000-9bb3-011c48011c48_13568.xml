@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13594</versionUuid>
+    <rule>
+        <name>VFM_supervisorTaskGrid</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13568</uuid>
+        <description>Grid to show the supervisor task</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13261</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>
+a!localVariables(
+  local!statusFilter,
+  local!taskStatus:{"Assiged","Accepted"},
+  {
+ #"SYSTEM_SYSRULES_dropdownField_v1"(
+   label:"Status",
+   value:local!statusFilter,
+   placeholder: "Please Select",
+   choiceLabels: local!taskStatus,
+   choiceValues:  {0,1},
+   saveInto: local!statusFilter
+ ),
+  #"SYSTEM_SYSRULES_gridField_v1"(
+    label: "My Task",
+    labelPosition: "ABOVE",
+    data:a!queryProcessAnalytics(
+      report: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13562",
+      contextGroups: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13381",
+      query: #"SYSTEM_SYSRULES_query"(
+        filter: #"SYSTEM_SYSRULES_queryFilter"(
+         field:"c1",
+        value:local!statusFilter,
+        operator:"=",
+        applyWhen:not(isnull(local!statusFilter))
+      ),
+        paginginfo: fv!paginginfo)
+     ),
+    columns: {
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label:"Name",
+        sortField: "c0",
+        value:#"SYSTEM_SYSRULES_linkField"(
+          links:#"SYSTEM_SYSRULES_processTaskLink"(
+            label:fv!row.c0,
+            task:fv!identifier
+        
+      ))),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label:"Status",
+        sortField: "c1",
+        value:fv!row.c1
+        
+      ),
+      #"SYSTEM_SYSRULES_gridColumn"(
+        label:"Assigned On",
+        sortField: "c3",
+        value:fv!row.c3
+      )
+    },
+    pageSize: 2,
+    validations: {},
+    rowHeader:2
+  )
+})</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13594"/>
+    </history>
+</contentHaul>

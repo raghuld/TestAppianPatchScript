@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>9c50060c-6449-44b9-9720-da64488de704</versionUuid>
+  <recordType a:uuid="eb6053d6-8e63-41e8-9c7a-427f671211ff" name="VFM Vehicle">
+    <a:pluralName>Fleet Vehicles</a:pluralName>
+    <a:description>Holds all vehicle information</a:description>
+    <a:urlStub>nmC9rg</a:urlStub>
+    <a:source xsi:type="a:RecordsReplica"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridField"(
+  columns: {
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "License Plate",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863",
+      value: #"SYSTEM_SYSRULES_linkField"(
+        links: {
+          #"SYSTEM_SYSRULES_recordLink"(
+            label: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863"],
+            recordType: #"urn:appian:record-type:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff",
+            identifier: fv!identifier
+          )
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Make",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe"]
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Model",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/3c55bc40-b455-4360-9dbb-94d73de0ea68",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/3c55bc40-b455-4360-9dbb-94d73de0ea68"]
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Mileage",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01"],
+      align: "END",
+      width: "NARROW"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Category",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c"]
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Vehicle Condition",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b5488925-1280-4031-a416-121b34e4e68a",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b5488925-1280-4031-a416-121b34e4e68a"]
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Last Updated",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/773a7ee1-c71d-4470-8d2b-3b012f72ddac",
+      value: if(
+      isnull(fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/773a7ee1-c71d-4470-8d2b-3b012f72ddac"]),
+      fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/773a7ee1-c71d-4470-8d2b-3b012f72ddac"],
+      datetext(fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/773a7ee1-c71d-4470-8d2b-3b012f72ddac"], "default")
+      ),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Next Service Date",
+      sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/41fdbca9-524b-451c-bb83-8fd0d24a67b3",
+      value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/41fdbca9-524b-451c-bb83-8fd0d24a67b3"],
+      align: "END"
+    )
+  },
+  pageSize: 50,
+  shadeAlternateRows: true
+)</a:listViewTemplateExpr>
+    <a:fieldCfg a:uuid="85177d91-ca20-403b-a4f2-e501653f0009" name="Category">
+      <a:description/>
+      <a:sourceRef>b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c</a:sourceRef>
+      <a:isSortable>false</a:isSortable>
+      <a:isSearchable>false</a:isSearchable>
+      <a:isFacet>true</a:isFacet>
+      <a:facetType>CUSTOM_BUCKETS_CLOSED</a:facetType>
+      <a:isExclusiveFacet>true</a:isExclusiveFacet>
+      <a:facetLabelExpr>"Category"</a:facetLabelExpr>
+      <a:facetExpr/>
+      <a:facetOption>
+        <a:labelExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13177"[1]</a:labelExpr>
+        <a:facetOperator>IN</a:facetOperator>
+        <a:lowerLimitExpr/>
+        <a:upperLimitExpr/>
+        <a:values>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13177"[1]</a:values>
+      </a:facetOption>
+      <a:facetOption>
+        <a:labelExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13177"[2]</a:labelExpr>
+        <a:facetOperator>IN</a:facetOperator>
+        <a:lowerLimitExpr/>
+        <a:upperLimitExpr/>
+        <a:values>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13177"[2]</a:values>
+      </a:facetOption>
+      <a:sortOrderIndex>0</a:sortOrderIndex>
+      <a:facetOrderIndex>0</a:facetOrderIndex>
+      <a:visibilityExpr/>
+      <a:defaultOptionExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13177"[2]</a:defaultOptionExpr>
+      <a:allowMultipleSelections>true</a:allowMultipleSelections>
+    </a:fieldCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>="Summary"</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+      <a:relatedActionCfg>1374bd0a-72a2-46e7-ae44-e0fbb26d9a82</a:relatedActionCfg>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>1</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_1gkT2Q</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>2</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_798TSA</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>3</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_EAELdw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>4</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_2_zESw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>5</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_LCLLKA</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>6</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_oM_JzQ</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>7</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_NMtcOw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>8</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_U-XbIQ</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>9</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_rXLCIg</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>10</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_-9iuSw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>11</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_42X3kw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>12</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_J_qo2Q</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>13</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_A7hQlQ</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>14</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_0VEucg</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>15</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_Lt3RUw</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>16</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_1chzqQ</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>17</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_q2-kTA</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>18</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_qzEGcg</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>19</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_SHMitg</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>20</a:nameExpr>
+      <a:uiExpr>#"_a-0000e690-5439-8000-9bb3-011c48011c48_13295"(VFM_Vechicle: rv!record)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>_SAVQLQ</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:detailViewHeaderCfg>
+        <a:headerTypeByte>1</a:headerTypeByte>
+      </a:detailViewHeaderCfg>
+    </a:detailViewCfg>
+    <a:relatedActionCfg a:uuid="7bb73b66-7553-4568-a310-cc4e681b6955">
+      <a:target a:uuid="0002e6ad-02f2-8000-fa94-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <a:contextExpr>{
+  cancel: null, /* Boolean */
+  readOnly: null, /* Boolean */
+  vechicle: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13278"(vehicleId: rv!identifier)
+}</a:contextExpr>
+      <a:visibilityExpr>true()</a:visibilityExpr>
+      <a:iconId>f0e7</a:iconId>
+      <a:refId>1374bd0a-72a2-46e7-ae44-e0fbb26d9a82</a:refId>
+      <a:staticTitleString>Update Vehicle</a:staticTitleString>
+      <a:descriptionExpr>"Update vehicle details for "rv!record[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863"]</a:descriptionExpr>
+      <a:referenceKey>updateVehicle</a:referenceKey>
+    </a:relatedActionCfg>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr>#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863"</a:titleExpr>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:hideNewsView>false</a:hideNewsView>
+    <a:hideRelatedActionsView>false</a:hideRelatedActionsView>
+    <a:isExportable>true</a:isExportable>
+    <a:listViewSrcExpr/>
+    <a:recordViewSrcExpr/>
+    <a:recordListActionCfg a:uuid="0e2bd275-28d6-413f-a7d5-92c02e6095ea">
+      <a:staticTitle>Add Vehicle</a:staticTitle>
+      <a:staticDescription>Process to add vehicle</a:staticDescription>
+      <a:iconId>f067</a:iconId>
+      <a:target a:uuid="0002e6ac-7fca-8000-fa7d-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:referenceKey>addVehicle</a:referenceKey>
+    </a:recordListActionCfg>
+    <a:iconId/>
+    <a:staticIconColor>#1d659c</a:staticIconColor>
+    <a:listAutoRefreshInterval>0.0</a:listAutoRefreshInterval>
+    <a:sourceConfiguration>
+      <sourceUuid>vfmvechicle@jdbc/Appian</sourceUuid>
+      <sourceType>RDBMS_TABLE</sourceType>
+      <friendlyName>vfmvechicle</friendlyName>
+      <sourceFilterExpr>#"SYSTEM_SYSRULES_queryLogicalExpression"(
+  operator: "AND",
+  filters: {
+    #"SYSTEM_SYSRULES_queryFilter"(
+      field: "mileage",
+      operator: "&lt;=",
+      value: 100000
+    )
+  },
+  ignoreFiltersWithEmptyValues: true
+)</sourceFilterExpr>
+      <field>
+        <uuid>cb05c546-7c4a-4238-a836-2b4f6834963c</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>id</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>id</fieldName>
+        <isRecordId>true</isRecordId>
+        <isUnique>true</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>a523eaaa-cca1-44a0-9d6d-786f41df3afe</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>make</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>make</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>3c55bc40-b455-4360-9dbb-94d73de0ea68</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>model</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>model</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>category</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>category</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>d5812a82-9443-4d72-b409-7a2c47f9b863</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>licenseplate</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>licenseplate</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>mileage</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>mileage</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>b5488925-1280-4031-a416-121b34e4e68a</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>vehiclecondition</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>vehicleCondition</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>773a7ee1-c71d-4470-8d2b-3b012f72ddac</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Datetime</type>
+        <sourceFieldName>lastupdated</sourceFieldName>
+        <sourceFieldType>TIMESTAMP</sourceFieldType>
+        <fieldName>lastUpdated</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <field>
+        <uuid>41fdbca9-524b-451c-bb83-8fd0d24a67b3</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Date</type>
+        <sourceFieldName>nextservicedate</sourceFieldName>
+        <sourceFieldType>DATE</sourceFieldType>
+        <fieldName>nextServiceDate</fieldName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <customFieldDefaultValueStr>null</customFieldDefaultValueStr>
+      </field>
+      <joinType>LEFT</joinType>
+      <uuid>bef94399-4d9b-449c-bc6d-5dc6a43273c0</uuid>
+      <refreshSchedule>
+        <frequency>DAILY</frequency>
+        <value>{"hour":3,"minute":"00","amPM":"AM","timeZone":"GMT","version":"v1"}</value>
+        <activated>false</activated>
+      </refreshSchedule>
+    </a:sourceConfiguration>
+    <a:enabledFeatures>31</a:enabledFeatures>
+    <a:isVisibleInRecordTypeList>true</a:isVisibleInRecordTypeList>
+    <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+  </recordType>
+  <roleMap>
+    <role name="record_type_administrator">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e690-5439-8000-9b00-01075c01075c_104</groupUuid>
+      </groups>
+    </role>
+    <role name="record_type_viewer">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e690-5439-8000-9b00-01075c01075c_102</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="78eaeb70-ab94-48c7-97a6-9f6767f938a2"/>
+    <historyInfo versionUuid="9c50060c-6449-44b9-9720-da64488de704"/>
+  </history>
+  <migrationVersion>1</migrationVersion>
+</recordTypeHaul>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13217</versionUuid>
+    <rule>
+        <name>VFM_FRM_addVehicle</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13166</uuid>
+        <description>Form to add vehicle</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13161</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_formLayout_v1"(
+  label: "Add Vehicle to Fleet",
+  contents: {
+    #"SYSTEM_SYSRULES_columnsLayout"(
+      columns: {
+        #"SYSTEM_SYSRULES_columnLayout"(
+          contents: {
+            #"SYSTEM_SYSRULES_textField"(
+              label: "Make",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.make,
+              saveInto: ri!vechicle.make,
+              characterLimit: 255,
+              readOnly: ri!readOnly
+            ),
+            if(
+              ri!readOnly,
+              #"SYSTEM_SYSRULES_textField"(
+                label: "Category",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                value: ri!vechicle.category,
+                saveInto: ri!vechicle.category,
+                characterLimit: 255,
+                readOnly: ri!readOnly
+              ),
+              #"SYSTEM_SYSRULES_dropdownField_v1"(
+                label: "Category",
+                placeholder: "Please select category",
+                choiceLabels: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13177",
+                choiceValues: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13177",
+                value: ri!vechicle.category,
+                saveInto: ri!vechicle.category,
+                required: true
+              )
+            ),
+            #"SYSTEM_SYSRULES_paragraphField"(
+              label: "Vehicle Condition",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.vehicleCondition,
+              saveInto: ri!vechicle.vehicleCondition,
+              characterLimit: 255,
+              readOnly: ri!readOnly,
+              required: if(ri!vechicle.mileage &gt; 500, true, false)
+            ),
+            #"SYSTEM_SYSRULES_dateField"(
+              label: "Next Service Date",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.nextServiceDate,
+              saveInto: ri!vechicle.nextServiceDate,
+              readOnly: ri!readOnly,
+              showWhen:not(or(ri!readOnly,isnull(ri!readOnly)))
+            )
+          }
+        ),
+        #"SYSTEM_SYSRULES_columnLayout"(
+          contents: {
+            #"SYSTEM_SYSRULES_textField"(
+              label: "Model",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.model,
+              saveInto: ri!vechicle.model,
+              characterLimit: 255,
+              readOnly: ri!readOnly
+            ),
+            #"SYSTEM_SYSRULES_textField"(
+              label: "License Plate",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.licensePlate,
+              saveInto: ri!vechicle.licensePlate,
+              characterLimit: 255,
+              readOnly: ri!readOnly
+            ),
+            #"SYSTEM_SYSRULES_dateField"(
+              label: "Last Updated",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.lastUpdated,
+              saveInto: ri!vechicle.lastUpdated,
+              readOnly: ri!readOnly,
+              validations: if(
+                ri!vechicle.lastUpdated &gt; today(),
+                "The date of the last update cannot be in the future",
+                null()
+              )
+            ),
+            #"SYSTEM_SYSRULES_integerField"(
+              label: "Mileage",
+              labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+              value: ri!vechicle.mileage,
+              saveInto: ri!vechicle.mileage,
+              readOnly: ri!readOnly
+            )
+          }
+        )
+      }
+    )
+  },
+  buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+    primaryButtons: {
+      #"SYSTEM_SYSRULES_ButtonWidget"(
+        label: "Submit",
+        submit: true,
+        saveInto: {
+          a!save(
+            ri!vechicle.nextServiceDate,
+            #"_a-0000e690-5439-8000-9bb3-011c48011c48_13183"(
+              category: ri!vechicle.category,
+              lastUpdatedOn: ri!vechicle.lastUpdated
+            )
+          )
+        },
+        style: "PRIMARY"
+      )
+    },
+    secondaryButtons: {
+      #"SYSTEM_SYSRULES_ButtonWidget"(
+        label: "Cancel",
+        value: true,
+        saveInto: ri!cancel,
+        submit: true,
+        style: "NORMAL",
+        validate: false
+      )
+    },
+    showWhen: or(isnull(ri!readOnly), not(ri!readOnly))
+  )
+)</definition>
+        <namedTypedValue>
+            <name>vechicle</name>
+            <type>
+                <name>VFM_Vechicle</name>
+                <namespace>urn:com:appian:types:VFM</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <typedValue>
+        <type>
+            <name>RuleTestConfig?list</name>
+            <namespace>http://www.appian.com/ae/types/2009</namespace>
+        </type>
+        <value>
+            <el>
+                <a:name/>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="a:Expression">'type!{urn:com:appian:types:VFM}VFM_Vechicle'()</a:value>
+                    <a:nameRef>vechicle</a:nameRef>
+                    <a:id>1</a:id>
+                </a:ruleInputTestConfigs>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" xsi:type="xsd:boolean"/>
+                    <a:nameRef>cancel</a:nameRef>
+                    <a:id>2</a:id>
+                </a:ruleInputTestConfigs>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" xsi:type="xsd:boolean"/>
+                    <a:nameRef>readOnly</a:nameRef>
+                    <a:id>3</a:id>
+                </a:ruleInputTestConfigs>
+                <a:assertions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </el>
+        </value>
+    </typedValue>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13217"/>
+    </history>
+</contentHaul>

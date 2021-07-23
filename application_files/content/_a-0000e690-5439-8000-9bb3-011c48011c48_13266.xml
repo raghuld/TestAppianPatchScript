@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13277</versionUuid>
+    <rule>
+        <name>VFM_getAllVehicles</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13266</uuid>
+        <description>Return all vehicles from DB</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13261</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_queryEntity_v1"(
+  entity: #"_a-0000e690-5439-8000-9bb3-011c48011c48_13255",
+  query: #"SYSTEM_SYSRULES_query"(
+    selection: #"SYSTEM_SYSRULES_querySelection"(
+      columns: {
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "id"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "make"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "model"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "category"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "licensePlate"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "vehicleCondition"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "mileage"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "nextServiceDate"
+        ),
+        #"SYSTEM_SYSRULES_queryColumn"(
+          field: "lastUpdated"
+        )
+      }
+    ),
+    pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(
+      startIndex: 1,
+      batchSize: 50,
+      sort: #"SYSTEM_SYSRULES_sortInfo"(
+        field: "id",
+        ascending: false
+      )
+    )
+  ),
+  fetchTotalCount: true
+).data</definition>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13277"/>
+    </history>
+</contentHaul>

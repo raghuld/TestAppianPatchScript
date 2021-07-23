@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13320</versionUuid>
+    <rule>
+        <name>VFM_vehicleMakeCategoryColumnChart</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13309</uuid>
+        <description>Column chart for vehicle make catogories</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13261</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #"SYSTEM_SYSRULES_columnChartField"(
+    data: #"SYSTEM_SYSRULES_recordData"(
+      recordType: #"urn:appian:record-type:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff",
+      filters: #"SYSTEM_SYSRULES_queryLogicalExpression"(
+        operator: "AND",
+        filters: {
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+            operator: "&lt;&gt;",
+            value: "2009"
+          )
+        },
+        ignoreFiltersWithEmptyValues: true
+      )
+    ),
+        config: #"SYSTEM_SYSRULES_barChartConfig"(
+      primaryGrouping: #"SYSTEM_SYSRULES_grouping"(
+        field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+        alias: "make_primaryGrouping"
+      ),
+          secondaryGrouping: #"SYSTEM_SYSRULES_grouping"(
+            field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c",
+            alias: "category_secondaryGrouping"
+          ),
+      measures: {
+        #"SYSTEM_SYSRULES_measure"(
+          function: "COUNT",
+          field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/cb05c546-7c4a-4238-a836-2b4f6834963c",
+          alias: "id_count_measure1"
+        )
+      },
+      dataLimit: 100,
+          link: #"SYSTEM_SYSRULES_dynamicLink"(
+            value: fv!selection,
+            saveInto: {} /* insert variable to save into */
+          )
+        ),
+    label: "Vehicle Make and Category",
+    stacking: "NORMAL",
+    showLegend: true,
+    showDataLabels: true,
+    showTooltips: true,
+    labelPosition: "ABOVE",
+    colorScheme: "RAINFOREST",
+    height: "MEDIUM",
+    xAxisStyle: "STANDARD",
+    yAxisStyle: "STANDARD"
+  )
+}</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13320"/>
+    </history>
+</contentHaul>

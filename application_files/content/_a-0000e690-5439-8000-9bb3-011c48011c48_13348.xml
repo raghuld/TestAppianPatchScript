@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13378</versionUuid>
+    <rule>
+        <name>VFM_drillableColumnChart</name>
+        <uuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13348</uuid>
+        <description>column chart with drilldown to results in table/grid</description>
+        <parentUuid>_a-0000e690-5439-8000-9bb3-011c48011c48_13261</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>{
+  #"SYSTEM_SYSRULES_columnsLayout"(
+    columns: {
+      #"SYSTEM_SYSRULES_columnLayout"(
+        contents: {
+          #"SYSTEM_SYSRULES_barChartField"(
+            data: #"urn:appian:record-type:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff",
+            config: #"SYSTEM_SYSRULES_barChartConfig"(
+              primaryGrouping: #"SYSTEM_SYSRULES_grouping"(
+                field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+                alias: "make_primaryGrouping"
+              ),
+              measures: {
+                #"SYSTEM_SYSRULES_measure"(
+                  label: "Number of Vehicle",
+                  function: "COUNT",
+                  field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/cb05c546-7c4a-4238-a836-2b4f6834963c",
+                  alias: "id_count_measure1"
+                ),
+                #"SYSTEM_SYSRULES_measure"(
+                  label: "Max of Vehicle",
+                  function: "MAX",
+                  field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/cb05c546-7c4a-4238-a836-2b4f6834963c",
+                  alias: "id_max_measure2"
+                )
+              },
+              dataLimit: 100,
+              link: #"SYSTEM_SYSRULES_dynamicLink"(
+                value: fv!selection.make_primaryGrouping,
+                saveInto: ri!make /* insert variable to save into */
+              )
+            ),
+            label: "Vehicle by Make",
+            labelPosition: "ABOVE",
+            stacking: "NONE",
+            showLegend: true,
+            showDataLabels: true,
+            showTooltips: true,
+            allowDecimalAxisLabels: true,
+            colorScheme: "RAINFOREST",
+            height: "MEDIUM",
+            xAxisStyle: "STANDARD",
+            yAxisStyle: "NONE"
+          )
+        }
+      ),
+      #"SYSTEM_SYSRULES_columnLayout"(
+        contents: {
+          #"SYSTEM_SYSRULES_gridField_v1"(
+            label: "Vehicle Details",
+            labelPosition: "ABOVE",
+            data: #"SYSTEM_SYSRULES_recordData"(
+              recordType: #"urn:appian:record-type:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff",
+              filters: #"SYSTEM_SYSRULES_queryLogicalExpression"(
+                operator: "AND",
+                filters: {
+                  #"SYSTEM_SYSRULES_queryFilter"(
+                    field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+                    operator: "=",
+                    value: ri!make
+                  )
+                },
+                ignoreFiltersWithEmptyValues: true
+              )
+            ),
+            columns: {
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "License Plate",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863",
+                value: #"SYSTEM_SYSRULES_linkField"(
+                  links: {
+                    #"SYSTEM_SYSRULES_recordLink"(
+                      label: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/d5812a82-9443-4d72-b409-7a2c47f9b863"],
+                      recordType: #"urn:appian:record-type:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff",
+                      identifier: fv!identifier
+                    )
+                  }
+                )
+              ),
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "Make",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe",
+                value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/a523eaaa-cca1-44a0-9d6d-786f41df3afe"]
+              ),
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "Model",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/3c55bc40-b455-4360-9dbb-94d73de0ea68",
+                value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/3c55bc40-b455-4360-9dbb-94d73de0ea68"]
+              ),
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "Mileage",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01",
+                value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01"],
+                align: "END",
+                width: "NARROW"
+              ),
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "Category",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c",
+                value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/b37c1ce7-dbd2-4654-bcdf-3f4cdfa9428c"]
+              ),
+              #"SYSTEM_SYSRULES_gridColumn"(
+                label: "Next Service Date",
+                sortField: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/41fdbca9-524b-451c-bb83-8fd0d24a67b3",
+                value: fv!row[#"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/41fdbca9-524b-451c-bb83-8fd0d24a67b3"],
+                align: "END"
+              )
+            },
+            initialSorts: {
+              #"SYSTEM_SYSRULES_sortInfo"(
+                field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/eac8cc45-1d8f-4cf9-aab1-fdaae90bdc01"
+              )
+            },
+            secondarySorts: {
+              #"SYSTEM_SYSRULES_sortInfo"(
+                field: #"urn:appian:record-field:v1:eb6053d6-8e63-41e8-9c7a-427f671211ff/3c55bc40-b455-4360-9dbb-94d73de0ea68"
+              )
+            },
+            validations: {},
+            spacing: "STANDARD",
+            height: "AUTO",
+            borderStyle: "STANDARD",
+            refreshAfter: "RECORD_ACTION",
+            userFilters: {},
+            showSearchBox: true,
+            showRefreshButton: true,
+            recordActions: {}
+          )
+        }
+      )
+    }
+  )
+}</definition>
+        <namedTypedValue>
+            <name>make</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e690-5439-8000-9bb3-011c48011c48_13378"/>
+    </history>
+</contentHaul>
