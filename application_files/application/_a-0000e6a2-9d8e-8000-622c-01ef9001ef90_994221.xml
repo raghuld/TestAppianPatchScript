@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <applicationHaul xmlns:a="http://www.appian.com/ae/types/2009">
-    <versionUuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_1005477</versionUuid>
+    <versionUuid>_a-0000e6b7-3b47-8000-622f-01ef9001ef90_1005753</versionUuid>
     <application>
         <name>Test Jenkins Import</name>
         <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994221</uuid>
@@ -48,6 +48,7 @@
                         <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994261</uuid>
                         <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994713</uuid>
                         <uuid>_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_1005472</uuid>
+                        <uuid>_a-0000e6b7-3b47-8000-622f-01ef9001ef90_1005748</uuid>
                     </uuids>
                 </item>
                 <item>
@@ -267,6 +268,7 @@
         <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994237"/>
         <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_994266"/>
         <historyInfo versionUuid="_a-0000e6a2-9d8e-8000-622c-01ef9001ef90_1005477"/>
+        <historyInfo versionUuid="_a-0000e6b7-3b47-8000-622f-01ef9001ef90_1005753"/>
     </history>
     <postDeploymentProcessData/>
-</applicationHaul><!--updated on 2021-07-23T11:36:26.824-->
+</applicationHaul><!--updated on 2021-07-23T12:32:32.869-->
