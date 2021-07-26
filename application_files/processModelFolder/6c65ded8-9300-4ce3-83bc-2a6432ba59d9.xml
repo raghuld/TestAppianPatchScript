@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processModelFolderHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_g-0000e6a2-9a44-8000-71b4-014d98014d98_533</versionUuid>
+    <processModelFolder>
+        <name>ESLA Models</name>
+        <uuid>6c65ded8-9300-4ce3-83bc-2a6432ba59d9</uuid>
+        <description>Process models folder for the Elsevier Sample Leave Application application [Base]</description>
+    </processModelFolder>
+    <roleMap>
+        <role name="ADMIN_OWNER">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1738</groupUuid>
+            </groups>
+        </role>
+        <role name="EDITOR">
+            <users/>
+            <groups/>
+        </role>
+        <role name="EXPLICIT_NONMEMBER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="VIEWER">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1740</groupUuid>
+            </groups>
+        </role>
+        <role name="MANAGER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="INITIATOR">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_g-0000e6a2-9a44-8000-71b4-014d98014d98_533"/>
+    </history>
+</processModelFolderHaul>

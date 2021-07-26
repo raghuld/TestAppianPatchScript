@@ -1,0 +1,75 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 23, 2021 at 10:34 AM
+-- Server version: 10.5.10-MariaDB-log
+-- PHP Version: 7.4.19
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `Appian`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ESLA_LEAVE_REQUEST`
+--
+
+CREATE TABLE `ESLA_LEAVE_REQUEST` (
+  `ID` int(11) NOT NULL,
+  `EMP_NAME` varchar(255) DEFAULT NULL,
+  `TO_DATE` date DEFAULT NULL,
+  `FROM_DATE` date DEFAULT NULL,
+  `EMP_ID` double DEFAULT NULL,
+  `REASON` varchar(255) DEFAULT NULL,
+  `CREATED_BY` varchar(255) DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `UPDATED_BY` varchar(255) DEFAULT NULL,
+  `UPDATED_ON` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ESLA_LEAVE_REQUEST`
+--
+
+INSERT INTO `ESLA_LEAVE_REQUEST` (`ID`, `NAME`, `LEAVE_FROM`, `LEAVE_TO`, `EMPLOYEE_ID`, `REASON`, `CREATED_BY`, `CREATED_ON`, `UPDATED_BY`, `UPDATED_ON`) VALUES
+(1, 'Egburg', '2021-07-02', '2021-07-01', 1, NULL, 'steffyj@vuram.com', '2021-07-01 16:02:40', NULL, NULL),
+(2, 'Steffy', '2021-07-09', '2021-07-08', 1, NULL, 'steffyj@vuram.com', '2021-07-08 16:02:40', NULL, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ESLA_LEAVE_REQUEST`
+--
+ALTER TABLE `ESLA_LEAVE_REQUEST`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `ESLA_LEAVE_REQUEST`
+--
+ALTER TABLE `ESLA_LEAVE_REQUEST`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

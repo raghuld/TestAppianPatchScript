@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186700</versionUuid>
+    <rule>
+        <name>ESLA_CreateUpdateLeaveRequest</name>
+        <uuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186582</uuid>
+        <description>Form interface for creating new Leave Requests as an action or updating Leave Requests as a related action [Records]</description>
+        <parentUuid>bdc9cd56-a53e-4747-8810-3b7a2f74a600</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!creating: a!refreshVariable(
+    value: isnull(ri!record),
+    refreshOnReferencedVarChange: false
+  ),
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: if(
+      local!creating,
+      "Add New Leave Request",
+      "Update Leave Request"
+    ),
+    contents: {
+      #"_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186578"(
+        record: ri!record,
+        creating: local!creating,
+        readOnly: false
+      )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        if(
+          local!creating,
+          #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+            label: "Submit Leave Request",
+            style: "PRIMARY",
+            saveInto: {
+              a!save(ri!record.createdOn, now()),
+              a!save(ri!record.createdBy, loggedInUser()),
+              a!save(ri!record.updatedOn, now()),
+              a!save(ri!record.updatedBy, loggedInUser())
+            }
+          ),
+          #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+            label: "Update Leave Request",
+            style: "PRIMARY",
+            saveInto: {
+              a!save(ri!record.updatedOn, now()),
+              a!save(ri!record.updatedBy, loggedInUser())
+            }
+          )
+        )
+      },
+      secondaryButtons: {
+        if(
+          local!creating,
+          #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+            label: "Cancel",
+            style: "NORMAL",
+            value: true,
+            saveInto: {
+              ri!cancel
+            },
+          skipValidation: true
+          ),
+          #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+            label: "Cancel",
+            style: "NORMAL",
+            value: true,
+            saveInto: {
+              ri!cancel
+            },
+            skipValidation: true
+          )
+        )
+      }
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>ESLA_LeaveRequest</name>
+                <namespace>urn:com:appian:types:ESLA</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186700"/>
+    </history>
+</contentHaul>

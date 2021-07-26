@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataStoreHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186871</versionUuid>
+    <dataStore>
+        <uuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186594</uuid>
+        <name>ESLA Leave Requests</name>
+        <description>Data store containing all application's data store entities. [Data]</description>
+        <dataSourceKey>jdbc/AppianBusiness</dataSourceKey>
+        <adaptingExplicitSqlNames>false</adaptingExplicitSqlNames>
+        <autoUpdateSchema>false</autoUpdateSchema>
+        <entities>
+            <entity>
+                <uuid>2086fc46-510c-4862-b627-b49ac3e5b057</uuid>
+                <name>ESLA_LeaveRequest</name>
+                <type>{urn:com:appian:types:ESLA}ESLA_LeaveRequest</type>
+            </entity>
+            <entity>
+                <uuid>f9b5b5b2-9995-4c28-846c-34c5e9d31be7</uuid>
+                <name>ESLA_EmployeeDetails</name>
+                <type>{urn:com:appian:types:ESLA}ESLA_EmployeeDetails</type>
+            </entity>
+        </entities>
+    </dataStore>
+    <isPublished>true</isPublished>
+    <roleMap>
+        <role inherit="false" allowForAll="false" name="administrators">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1738</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="readers">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1740</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186871"/>
+    </history>
+</dataStoreHaul>

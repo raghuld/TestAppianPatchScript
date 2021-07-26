@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186636</versionUuid>
+    <rule>
+        <name>ESLA_LeaveRequestDetails</name>
+        <uuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186578</uuid>
+        <description>Section interface showing the base Leave Request interface module. Contains all the basic fields of the record. Used by the summary record view, create and update forms, as well as task forms. [Base] [Records]</description>
+        <parentUuid>bdc9cd56-a53e-4747-8810-3b7a2f74a600</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  /* The local variables store the options for the Pick Single / Multiple from List fields    *
+   * We only show the active options, plus any inactive options already stored on this record */
+
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: ri!label,
+      contents: #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_textField"(
+                label: "Emp Name",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                instructions: if(ri!readOnly, "", ""),
+                helpTooltip: if(ri!readOnly, "", ""),
+                placeholder: if(ri!readOnly, "", ""),
+                required: not(ri!readOnly),
+                value: ri!record.empName,
+                saveInto: ri!record.empName,
+                readOnly: ri!readOnly,
+                validations: if(
+                  len(ri!record.empName) &lt;= 200,
+                  "",
+                  "Value may not be longer than 200 characters. You have entered " &amp; len(ri!record.empName) &amp; " characters."
+                )
+              ),
+              #"SYSTEM_SYSRULES_dateField"(
+                label: "To Date",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                instructions: if(ri!readOnly, "", ""),
+                helpTooltip: if(ri!readOnly, "", ""),
+                required: not(ri!readOnly),
+                value: ri!record.toDate,
+                saveInto: ri!record.toDate,
+                readOnly: ri!readOnly
+              ),
+              #"SYSTEM_SYSRULES_dateField"(
+                label: "From Date",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                instructions: if(ri!readOnly, "", ""),
+                helpTooltip: if(ri!readOnly, "", ""),
+                required: not(ri!readOnly),
+                value: ri!record.fromDate,
+                saveInto: ri!record.fromDate,
+                readOnly: ri!readOnly
+              ),
+              if(
+                ri!creating,
+                {},
+                {
+                  #"SYSTEM_SYSRULES_linkField"(
+                    label: "Created By",
+                    labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                    links: #"SYSTEM_SYSRULES_userRecordLink"(
+                      label: #"bc9b81bf-7b4c-44f5-98fe-da42632b17b8_FORMATNAME"(ri!record.createdBy),
+                      user: ri!record.createdBy
+                    )
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Created On",
+                    labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                    value: #"_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186558"(ri!record.createdOn),
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          ),
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_floatingPointField"(
+                label: "Emp Id",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                instructions: if(ri!readOnly, "", ""),
+                helpTooltip: if(ri!readOnly, "", ""),
+                placeholder: if(ri!readOnly, "", ""),
+                required: false,
+                value: ri!record.empId,
+                saveInto: ri!record.empId,
+                readOnly: ri!readOnly
+              ),
+              #"SYSTEM_SYSRULES_textField"(
+                label: "Reason",
+                labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                instructions: if(ri!readOnly, "", ""),
+                helpTooltip: if(ri!readOnly, "", ""),
+                placeholder: if(ri!readOnly, "", ""),
+                required: false,
+                value: ri!record.reason,
+                saveInto: ri!record.reason,
+                readOnly: ri!readOnly,
+                validations: if(
+                  len(ri!record.reason) &lt;= 200,
+                  "",
+                  "Value may not be longer than 200 characters. You have entered " &amp; len(ri!record.reason) &amp; " characters."
+                )
+              ),
+              if(
+                ri!creating,
+                {},
+                {
+                  #"SYSTEM_SYSRULES_linkField"(
+                    label: "Updated By",
+                    labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                    links: #"SYSTEM_SYSRULES_userRecordLink"(
+                      label: #"bc9b81bf-7b4c-44f5-98fe-da42632b17b8_FORMATNAME"(ri!record.updatedBy),
+                      user: ri!record.updatedBy
+                    )
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Updated On",
+                    labelPosition: if(ri!readOnly, "ADJACENT", "ABOVE"),
+                    value: #"_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186558"(ri!record.updatedOn),
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          )
+        }
+      )
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>ESLA_LeaveRequest</name>
+                <namespace>urn:com:appian:types:ESLA</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>creating</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>label</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <typedValue>
+        <type>
+            <name>RuleTestConfig?list</name>
+            <namespace>http://www.appian.com/ae/types/2009</namespace>
+        </type>
+        <value>
+            <el>
+                <a:name/>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">&lt;a:value xmlns:a="http://www.appian.com/ae/types/2009" xmlns:n1="urn:com:appian:types:WJ" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" xsi:type="n1:WJ_WorkJournalEntry" /&gt;</a:value>
+                    <a:nameRef>record</a:nameRef>
+                    <a:id/>
+                </a:ruleInputTestConfigs>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:boolean">true</a:value>
+                    <a:nameRef>creating</a:nameRef>
+                    <a:id/>
+                </a:ruleInputTestConfigs>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:boolean">false</a:value>
+                    <a:nameRef>readOnly</a:nameRef>
+                    <a:id/>
+                </a:ruleInputTestConfigs>
+                <a:ruleInputTestConfigs>
+                    <a:value xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string"/>
+                    <a:nameRef>label</a:nameRef>
+                    <a:id/>
+                </a:ruleInputTestConfigs>
+                <a:assertions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </el>
+        </value>
+    </typedValue>
+    <history>
+        <historyInfo versionUuid="_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186636"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186664</versionUuid>
+    <rule>
+        <name>ESLA_DeleteLeaveRequestEntry</name>
+        <uuid>_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186574</uuid>
+        <description>Form used to delete a record and any supporting attachments [Records]</description>
+        <parentUuid>bdc9cd56-a53e-4747-8810-3b7a2f74a600</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=#"SYSTEM_SYSRULES_formLayout_v1"(
+  label: if(
+    isnull(ri!record.empName),
+    "Delete?",
+    "Delete " &amp; ri!record.empName &amp; "?"
+  ),
+  instructions: "",
+  contents: {
+    #"SYSTEM_SYSRULES_paragraphField"(
+      labelPosition: "COLLAPSED",
+      readOnly: true,
+      value: "Submitting this form will delete your record and its attachments. The data will no longer exist or be visible.
+
+After deletion, it is recommended to return to the records list, as this record will become unavailable."
+    )
+  },
+  buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+    primaryButtons: {
+      #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+        label: "Delete",
+        style: "PRIMARY",
+        confirmMessage: "Are you sure you want to delete this record? This action cannot be undone."
+      )
+    },
+    secondaryButtons: {
+      #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+        label: "Cancel",
+        style: "NORMAL",
+        value: true,
+        saveInto: ri!cancel,
+        skipValidation: true
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>ESLA_LeaveRequest</name>
+                <namespace>urn:com:appian:types:ESLA</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186664"/>
+    </history>
+</contentHaul>

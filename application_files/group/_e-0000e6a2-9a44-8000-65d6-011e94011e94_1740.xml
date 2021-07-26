@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<groupHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1741</versionUuid>
+    <group>
+        <name>Elsevier Sample Leave Application Users</name>
+        <securityMap>SECURITYMAP_TEAM</securityMap>
+        <uuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1740</uuid>
+        <groupTypeUuid>SYSTEM_GROUP_TYPE_CUSTOM</groupTypeUuid>
+        <description>Group that all Elsevier Sample Leave Application activity is secured to</description>
+        <delegatedCreation>false</delegatedCreation>
+        <memberPolicy>MEMBERPOLICY_CLOSED</memberPolicy>
+        <viewingPolicy>VIEWINGPOLICY_LOW</viewingPolicy>
+        <attributes/>
+    </group>
+    <members>
+        <users/>
+        <groups>
+            <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1738</groupUuid>
+        </groups>
+    </members>
+    <admins>
+        <users/>
+        <groups>
+            <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1738</groupUuid>
+            <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1740</groupUuid>
+        </groups>
+    </admins>
+    <ruleSet/>
+    <history>
+        <historyInfo versionUuid="_e-0000e6a2-9a44-8000-65d6-011e94011e94_1741"/>
+    </history>
+</groupHaul>

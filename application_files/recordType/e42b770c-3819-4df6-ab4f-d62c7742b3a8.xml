@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>58840c2c-2d3c-4471-8447-a38c4470790b</versionUuid>
+  <recordType a:uuid="e42b770c-3819-4df6-ab4f-d62c7742b3a8" name="Leave Request">
+    <a:pluralName>Leave Requests</a:pluralName>
+    <a:description>List of entries in the Elsevier Sample Leave Application application</a:description>
+    <a:urlStub>N8JjLQ</a:urlStub>
+    <a:source
+      a:uuid="2086fc46-510c-4862-b627-b49ac3e5b057@_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186594" xsi:type="a:DataStoreEntity"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridField"(
+  rowHeader: 1,
+  emptyGridMessage: "No Leave Requests available",
+  columns: {
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Emp Name",
+      sortField: #"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/empName",
+      width: "7X",
+      value: #"SYSTEM_SYSRULES_linkField"(
+        links: #"SYSTEM_SYSRULES_recordLink"(
+          label: fv!row[#"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/empName"],
+          recordType: #"urn:appian:record-type:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8",
+          identifier: fv!identifier
+        )
+      )
+    ),
+    
+    
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Created By",
+      sortField: #"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/createdBy",
+      width: "4X",
+      value: #"SYSTEM_SYSRULES_linkField"(
+        links: #"SYSTEM_SYSRULES_userRecordLink"(
+          label: #"bc9b81bf-7b4c-44f5-98fe-da42632b17b8_FORMATNAME"(fv!row[#"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/createdBy"]),
+          user: fv!row[#"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/createdBy"]
+        )
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Updated On",
+      sortField: #"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/updatedOn",
+      width: "2X",
+      align: "END",
+      value: #"_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186558"(fv!row[#"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/updatedOn"])
+    )
+  },
+  pageSize: 50,
+  initialSorts: {
+    #"SYSTEM_SYSRULES_sortInfo"(
+      field: #"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/updatedOn",
+      ascending: false
+    )
+  }
+)</a:listViewTemplateExpr>
+    <a:fieldCfg a:uuid="babdbced-bfa4-41e0-a9b0-4e9fb9706380" name="Created By">
+      <a:isSortable>false</a:isSortable>
+      <a:isSearchable>false</a:isSearchable>
+      <a:isFacet>true</a:isFacet>
+      <a:facetType>EXPRESSION</a:facetType>
+      <a:isExclusiveFacet>true</a:isExclusiveFacet>
+      <a:facetExpr>with(
+  local!creators:#"SYSTEM_SYSRULES_queryEntity_v1"(
+    entity: #"4a5392be-ff8b-48e0-852f-e89830b302d2_MAINDSECONSTANT",
+    query: #"SYSTEM_SYSRULES_query"(
+      aggregation: #"SYSTEM_SYSRULES_queryAggregation"(
+        aggregationColumns: {
+          #"SYSTEM_SYSRULES_queryAggregationColumn"(field: "createdBy", isGrouping: true),
+          #"SYSTEM_SYSRULES_queryAggregationColumn"(field: "createdBy", alias: "numberCreated", aggregationFunction: "COUNT")
+        }
+      ),
+      pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(1, -1, #"SYSTEM_SYSRULES_sortInfo"("createdBy", true))
+    ),
+    fetchTotalCount: true
+  ),
+  if(
+    local!creators.totalCount = 0,
+    {},
+    #"SYSTEM_SYSRULES_facet_v1"(
+      name: "Created By",
+      options: #"SYSTEM_SYSRULES_forEach"(
+        items: local!creators,
+        expression: #"SYSTEM_SYSRULES_facetOption"(
+          id: fv!index,
+          name: #"bc9b81bf-7b4c-44f5-98fe-da42632b17b8_FORMATNAME"(fv!item.createdBy),
+          filter: #"SYSTEM_SYSRULES_queryFilter"(
+            field: #"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/createdBy",
+            operator: "=",
+            value: fv!item.createdBy
+          ),
+          dataCount: fv!item.numberCreated
+        )
+      )
+    )
+  )
+)</a:facetExpr>
+      <a:sortOrderIndex>0</a:sortOrderIndex>
+      <a:facetOrderIndex>0</a:facetOrderIndex>
+      <a:visibilityExpr/>
+      <a:defaultOptionExpr/>
+      <a:allowMultipleSelections>false</a:allowMultipleSelections>
+    </a:fieldCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>="Summary"</a:nameExpr>
+      <a:uiExpr>#"_a-0000e6a2-9a44-8000-65da-01ef9001ef90_186586"(rv!identifier)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+      <a:relatedActionCfg>8d8a5ff8-e659-4da4-afd4-6505be8e5a55</a:relatedActionCfg>
+      <a:relatedActionCfg>dc1e3041-528c-46f9-9c1f-26ae1d948662</a:relatedActionCfg>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+    </a:detailViewCfg>
+    <a:relatedActionCfg a:uuid="69e052bd-fc21-45ce-97f0-48a25968b7d7">
+      <a:target a:uuid="14a9c787-5920-425f-8184-8e80cc79ed04" xsi:type="a:ProcessModel"/>
+      <a:contextExpr>with(
+  local!record: #"f0365b8e-65d3-4f7c-9a60-50850bc8baab_GETONERECORD"(rv!identifier),
+  {
+    record: local!record
+  }
+)</a:contextExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:iconId>f044</a:iconId>
+      <a:refId>8d8a5ff8-e659-4da4-afd4-6505be8e5a55</a:refId>
+      <a:staticTitleString>Update Leave Request</a:staticTitleString>
+      <a:staticDescriptionString>Update this Leave Request</a:staticDescriptionString>
+      <a:referenceKey>updateLeaveRequest</a:referenceKey>
+    </a:relatedActionCfg>
+    <a:relatedActionCfg a:uuid="5052cd8b-6969-444c-b859-aee599257ba2">
+      <a:target a:uuid="468e2ba7-55ac-408c-bb78-2c20cb6b1c00" xsi:type="a:ProcessModel"/>
+      <a:contextExpr>{
+  record: #"f0365b8e-65d3-4f7c-9a60-50850bc8baab_GETONERECORD"(rv!identifier)
+}</a:contextExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:iconId>f014</a:iconId>
+      <a:refId>dc1e3041-528c-46f9-9c1f-26ae1d948662</a:refId>
+      <a:staticTitleString>Delete Leave Request</a:staticTitleString>
+      <a:staticDescriptionString>Delete this record</a:staticDescriptionString>
+      <a:referenceKey>deleteLeaveRequest</a:referenceKey>
+    </a:relatedActionCfg>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr>rv!record[#"urn:appian:record-field:v1:e42b770c-3819-4df6-ab4f-d62c7742b3a8/empName"]</a:titleExpr>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:hideNewsView>false</a:hideNewsView>
+    <a:hideRelatedActionsView>false</a:hideRelatedActionsView>
+    <a:isExportable>true</a:isExportable>
+    <a:recordListActionCfg a:uuid="a6f7dd54-1142-4ef7-a5d0-c880cdf88b6f">
+      <a:staticTitle>New Leave Request</a:staticTitle>
+      <a:staticDescription>Create a new Leave Request</a:staticDescription>
+      <a:iconId>f067</a:iconId>
+      <a:target a:uuid="14a9c787-5920-425f-8184-8e80cc79ed04" xsi:type="a:ProcessModel"/>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:referenceKey>newLeaveRequest</a:referenceKey>
+    </a:recordListActionCfg>
+    <a:listAutoRefreshInterval>0.0</a:listAutoRefreshInterval>
+    <a:enabledFeatures>31</a:enabledFeatures>
+    <a:isVisibleInRecordTypeList>true</a:isVisibleInRecordTypeList>
+    <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+  </recordType>
+  <roleMap>
+    <role name="record_type_administrator">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1738</groupUuid>
+      </groups>
+    </role>
+    <role name="record_type_viewer">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e6a2-9a44-8000-65d6-011e94011e94_1740</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="58840c2c-2d3c-4471-8447-a38c4470790b"/>
+  </history>
+  <migrationVersion>1</migrationVersion>
+</recordTypeHaul>
